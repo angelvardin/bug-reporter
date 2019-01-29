@@ -1,0 +1,51 @@
+﻿@model IEnumerable<BugReporter_v2.Areas.Admin.Models.AllUsersActivityDetails>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>User Activities</h2>
+
+@(Html.Kendo().Grid(Model)
+     .Name("Grid")
+     .Columns(colums => {
+         colums.Bound(e => e.UserName).Width(120).Filterable(true);
+         colums.Bound(e => e.LastActivityTime).Width(160).Filterable(false);
+         colums.Bound(e => e.LastActivityDone).Filterable(false);
+         colums.Bound(e => e.NumberOfProjects).Width(160).Filterable(false);
+         colums.Bound(e => e.NumberOfBugs).Width(130).Filterable(false);
+         colums.Command(command => {
+         command.Custom("Details").Text("Edit").Action("Edit", "User").DataRouteValues(c =>c.Add(v => v.UserName));
+         command.Destroy();
+         }).Width(200);
+     })
+     .Editable()
+     .Pageable()
+     .Sortable()
+     .Scrollable()
+     .Filterable(filterable => filterable
+        .Extra(false)
+        .Operators(operators => operators
+            .ForString(str => str.Clear()
+                .StartsWith("Starts with")
+                .IsEqualTo("Is equal to")
+                .IsNotEqualTo("Is not equal to")
+            ))
+        )
+     .DataSource(dataSource => dataSource
+        .Server()
+        .Model(model => model.Id(p => p.UserId))
+        .Read("AllUsersActivityDetails", "User")
+        .Destroy("Delete", "User")
+        .PageSize(15)
+        )
+         
+     )
+ 
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("form.k-edit-form").kendoValidator();
+    });
+</script>

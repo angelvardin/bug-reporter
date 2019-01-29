@@ -1,0 +1,70 @@
+﻿@model IEnumerable<BugReporter_v2.Models.BugViewModel>
+
+@{
+    ViewBag.Title = "Bugs";
+}
+
+<h2>List of All Bugs</h2>
+
+<br />
+<br />
+
+@(Html.Kendo().Grid(Model)
+     .Name("BugGrid")
+     .Columns(colums => {
+         colums.Bound(e => e.BugId).Width(45).Filterable(false);
+         colums.Bound(e => e.ProjectName).Title("Project").Filterable(filterable => filterable.UI("projectFilter"))
+                .Width(130);
+         colums.Bound(e => e.Priority).Width(100).Filterable(false);
+         colums.Bound(e => e.Status).Width(100).Filterable(false);
+         colums.Bound(e => e.Owner).Width(100).Filterable(false);
+         colums.Bound(e => e.Desctiption).Filterable(false);
+         colums.Command(command => {
+         command.Custom("Details").Text("Edit").Action("Edit", "Bug").DataRouteValues(c =>c.Add(v => v.Owner));
+         command.Destroy();
+         }).Width(190);
+     })
+     .Editable()
+     .Filterable(filterable => filterable
+        .Extra(false)
+        .Operators(operators => operators
+            .ForString(str => str.Clear()
+                .StartsWith("Starts with")
+                .IsEqualTo("Is equal to")
+                .IsNotEqualTo("Is not equal to")
+            ))
+        )
+     .Pageable()
+     .Sortable()
+     .Scrollable()
+     .DataSource(dataSource => dataSource
+        .Server()
+        .Model(model => model.Id(p => p.BugId))
+        .Read("Index", "Bug")
+        .Destroy("Delete", "Bug")
+        .PageSize(15)
+        ).HtmlAttributes(new { style = "height: 500px" })
+         
+     )
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+<script type="text/javascript">
+
+
+    function projectFilter(element) {
+        element.kendoDropDownList({
+            dataSource: {
+                transport: {
+                    read: "@Url.Action("AllProjects")"
+                }
+            },
+            optionLabel: "--Select Value--"
+        });
+    }
+
+
+</script>
+    }
+

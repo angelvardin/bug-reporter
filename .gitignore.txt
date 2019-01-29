@@ -1,0 +1,5 @@
+BugReporter_v2/External Libraries/
+BugReporter_v2/packages/
+BugReporter_v2/BugReporter.DAL/bin
+BugReporter_v2/BugReporter_v2/bin
+BugReporter_v2/BugReporter_v2/obj

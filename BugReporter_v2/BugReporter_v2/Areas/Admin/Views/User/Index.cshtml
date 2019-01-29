@@ -1,0 +1,49 @@
+﻿@model IEnumerable<BugReporter_v2.Models.RegisterModel>
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>All users</h2>
+<br />
+
+<a href="#" id="Register1">+ Add New User</a>
+
+<br />
+<br />
+@(Html.Kendo().Grid(Model)
+     .Name("UserGrid")
+     .Columns(colums => {
+         colums.Bound(e => e.UserName).Filterable(false);
+         colums.Bound(e => e.FirstName).Filterable(false);
+         colums.Bound(e => e.LastName).Filterable(false);
+         colums.Bound(e => e.Email).Filterable(false);
+         colums.Bound(e => e.Telephone).Filterable(false);
+         colums.Command(command => {
+         command.Custom("Details").Text("Edit").Action("Edit", "User").DataRouteValues(c =>c.Add(v => v.UserName));
+         command.Destroy();
+         }).Width(200);
+     })
+     .Editable()
+     .Pageable()
+     .Sortable()
+     .Scrollable()
+     .DataSource(dataSource => dataSource
+        .Server()
+        .Model(model => model.Id(p => p.UserId))
+        .Read("Index", "User")
+        .Update("Register","User")
+        .Destroy("Delete", "User")
+        .PageSize(15)
+        )
+         
+     )
+ 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("form.k-edit-form").kendoValidator();
+        $('#Register1').button().click(function (event) {
+            location.href = '@Url.Action("Register","User")';
+        });
+    });
+</script>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1eebc1bfb5ff47e39969979e0c9a6e47" Name="Diagram1" >
+        <EntityTypeShape EntityType="BugReporter_v2Model.webpages_Membership" Width="1.5" PointX="9.25" PointY="12.625" />
+        <EntityTypeShape EntityType="BugReporter_v2Model.webpages_OAuthMembership" Width="1.5" PointX="9.2250272879493558" PointY="21.556257362270848" />
+        <EntityTypeShape EntityType="BugReporter_v2Model.webpages_Roles" Width="1.5" PointX="12.625" PointY="3.5" />
+        <EntityTypeShape EntityType="BugReporter_v2Model.Project" Width="1.5" PointX="4.375" PointY="4.25" />
+        <EntityTypeShape EntityType="BugReporter_v2Model.Log" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="BugReporter_v2Model.Bug" Width="1.5" PointX="3.625" PointY="12.75" />
+        <AssociationConnector Association="BugReporter_v2Model.FK_Bugs_Projects" />
+        <AssociationConnector Association="BugReporter_v2Model.FK_Logs_Bugs" />
+        <EntityTypeShape EntityType="BugReporter_v2Model.UserProfile" Width="1.5" PointX="7.5330626776130227" PointY="7.73256968321864" />
+        <AssociationConnector Association="BugReporter_v2Model.FK_Bugs_UserProfile" />
+        <AssociationConnector Association="BugReporter_v2Model.FK_Logs_UserProfile" />
+        <AssociationConnector Association="BugReporter_v2Model.UsersInProjects" />
+        <AssociationConnector Association="BugReporter_v2Model.webpages_UsersInRoles" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

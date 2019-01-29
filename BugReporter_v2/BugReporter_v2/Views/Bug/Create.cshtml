@@ -1,0 +1,66 @@
+﻿@using BugReporter_v2.Models
+@model CreateBugModel
+
+@{
+    ViewBag.Title = "Submit new bug";
+}
+
+<h2>Submit new bug</h2>
+
+@using (Html.BeginForm("Create", "Bug",FormMethod.Post))
+{
+    
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Bug</legend>
+        <br />
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProjectID)
+        </div>
+        <div class="editor-field">
+            <p>
+                @Html.DropDownListFor(model=>model.ProjectID,ViewBag.Projects as SelectList,"---Select A Project---")
+                @Html.ValidationMessageFor(model => model.ProjectID)
+            </p>
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Priority)
+        </div>
+        <div class="editor-field">
+            <p>
+                    @Html.DropDownListFor(
+                   model => model.Priority, 
+                   new SelectList(
+                          new List<Object>{ 
+                               new { value = "Low" , text = "Low"  },
+                               new { value = "Normal" , text = "Normal" },
+                               new { value = "Hight" , text = "Hight"},
+                               new { value = "Critical" , text = "Critical"},
+                            },
+                          "value",
+                          "text"
+                   ) , "---Select A Priority---"
+                )
+                    @Html.ValidationMessageFor(model => model.Priority)
+                </p>
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Desctiption)
+        </div>
+        <div class="editor-field">
+            <p>
+                @Html.TextAreaFor(model => model.Desctiption)
+                @Html.ValidationMessageFor(model => model.Desctiption)
+            </p>  
+        </div>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

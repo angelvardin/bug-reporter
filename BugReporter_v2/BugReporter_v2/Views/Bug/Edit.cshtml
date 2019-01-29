@@ -1,0 +1,106 @@
+﻿@using BugReporter_v2.Models
+@model EditBugModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Information</h2>
+
+@using (Html.BeginForm("Edit", "Bug", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+
+      <fieldset>
+         <legend>Bug</legend>
+        <br />
+          <div class="editor-label">
+            @Html.LabelFor(model => model.Owner, "Owner")
+        </div>
+        <div class="editor-field">
+            <p>
+                @Html.DropDownListFor(model=>model.Owner,ViewBag.Users as SelectList)
+                @Html.ValidationMessageFor(model => model.Owner)
+            </p>
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProjectName, "Project")
+        </div>
+        <div class="editor-field">
+            <p>
+                @Html.DropDownListFor(model=>model.ProjectID,ViewBag.Projects as SelectList)
+                @Html.ValidationMessageFor(model => model.ProjectName)
+            </p>
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Status)
+        </div>
+        <div class="editor-field">
+            <p>
+                 @Html.DropDownListFor(
+               model => model.Status, 
+               new SelectList(
+                      new List<Object>{ 
+                           new { value = "New" , text = "New"  },
+                           new { value = "In Progress" , text = "In Progress" },
+                           new { value = "Fixed" , text = "Fixed"},
+                           new { value = "Closed" , text = "Closed"},
+                        },
+                      "value",
+                      "text"
+               ) 
+            )
+                @Html.ValidationMessageFor(model => model.Status)
+           </p>
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Priority)
+        </div>
+        <div class="editor-field">
+            <p>
+                    @Html.DropDownListFor(
+                   model => model.Priority, 
+                   new SelectList(
+                          new List<Object>{ 
+                               new { value = "Low" , text = "Low"  },
+                               new { value = "Normal" , text = "Normal" },
+                               new { value = "Hight" , text = "Hight"},
+                               new { value = "Critical" , text = "Critical"},
+                            },
+                          "value",
+                          "text"
+                   ) 
+                )
+                    @Html.ValidationMessageFor(model => model.Priority)
+                </p>
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Desctiption)
+        </div>
+        <div class="editor-field">
+            <p>
+                @Html.TextAreaFor(model => model.Desctiption)
+                @Html.ValidationMessageFor(model => model.Desctiption)
+            </p>  
+        </div>
+
+          <div class="hidden-field">
+            @Html.Hidden("bugID")
+          </div>
+          
+        <p>
+            <input type="submit" value="Edit" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

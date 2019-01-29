@@ -1,0 +1,417 @@
+﻿html {
+    background-color: #00a3d3; /*blue*/
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #fff;
+    border-top: solid 10px #000;
+    color: #333;
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #333;
+    outline: none;
+    padding-left: 3px;
+    padding-right: 3px;
+    text-decoration: underline;
+}
+
+a:link, a:visited,
+a:active, a:hover {
+    color: #333;
+}
+
+a:hover {
+    background-color: #c7d1d6;
+}
+
+header, footer, hgroup,
+nav, section {
+    display: block;
+}
+
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.clear-fix:after {
+    content: ".";
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+h1, h2, h3,
+h4, h5, h6 {
+    color: #00a3d3;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.75em;
+    margin-bottom:0.9em;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+h4 {
+    font-size: 1.1em;
+}
+
+h5, h6 {
+    font-size: 1em;
+}
+
+h5 a:link, h5 a:visited, h5 a:active {
+        padding: 0;
+        text-decoration: none;
+}
+
+
+
+/* main layout
+----------------------------------------------------------*/
+.whiteBox {
+    width: 960px;
+    background: white;
+    border: 1px solid #dddfe1;
+    border-top: 1px solid #e8ebee;
+    border-radius: 3px;
+    padding: 15px;
+}
+
+header {
+    display: block;
+    background-color:#00a3d3;
+    height:90px;
+}
+
+#body {
+    background-color: white;
+    clear: both;
+    padding-bottom: 35px;
+    width: 960px;
+    margin: 0px auto;
+
+}
+
+.main-content {
+    padding-left: 10px;
+    padding-top: 30px;
+    text-align:left;
+    margin:10px;
+
+}
+
+
+footer {
+    clear: both;
+    background-color:#00a3d3;
+    font-size: .8em;
+    height:100px;
+    color: #c7e3ea;
+}
+.content-wrapper
+{
+    padding-left:15em;
+    width:84em;
+}
+
+/* site title
+----------------------------------------------------------*/
+.title {
+    float:left;
+    height:50px;
+}
+
+.title img {
+    height:40px;
+    width:40px;
+    margin: 4px 4px;
+}
+
+.site-title {
+    color: #fff;
+    font-family: Rockwell, Consolas, "Courier New", Courier, monospace;
+    font-size: 40px;
+    margin: 0;
+    display:inline-block;
+    cursor: pointer;
+    vertical-align: top;
+}
+
+.site-title a, .site-title a:hover, .site-title a:active {
+    background: none;
+    color: #fff;
+    outline: none;
+    text-decoration: none;
+}
+
+/************end of site title***********************/
+
+header .UserInfo {
+    float:right;
+    margin: 10px 10px 10px 55%;
+}
+
+header .UserInfo span {
+    color: #c7e3ea;
+}
+
+header .UserInfo a {
+    background: none;
+    color: #c7e3ea;
+}
+
+header .UserInfo a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* menu */
+nav {
+    margin-bottom: 5px;
+    clear:both;
+}
+
+
+ul#menu li {
+    margin-right: 8px;
+    padding: 0;
+}
+
+ul#menu {
+    float:left;
+    font-size: 1.3em;
+    font-weight: 600;
+    margin: 3px 5px 15px 8px;
+    padding: 0;
+}
+
+ul#menu li {
+    display: inline;
+    list-style: none;
+}
+
+ul#menu li a {
+    background: none;
+    color: #c7e3ea;
+    text-decoration: none;
+}
+
+ul#menu li a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* login page */
+#loginForm {
+    float: left;
+    width: 55%;
+}
+
+#loginForm .validation-error {
+    display: block;
+    margin-left: 15px;
+}
+
+#loginForm .validation-summary-errors ul {
+    margin: 0;
+    padding: 0;
+}
+
+#loginForm .validation-summary-errors li {
+    display: inline;
+    list-style: none;
+    margin: 0;
+}
+
+#loginForm input {
+    width: 250px;
+}
+
+#loginForm input[type="checkbox"],
+#loginForm input[type="submit"],
+#loginForm input[type="button"],
+#loginForm button {
+    width: auto;
+}
+
+
+#logoutForm {
+    display: inline;
+}
+
+/* contact */
+.contact h3 {
+    font-size: 1.2em;
+}
+
+.contact p {
+    margin: 5px 0 0 10px;
+}
+
+.contact iframe {
+    border: 1px solid #333;
+    margin: 5px 0 0 10px;
+}
+
+/* forms */
+fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+fieldset legend {
+    display: none;
+}
+
+fieldset ol {
+    padding: 0;
+    list-style: none;
+}
+
+fieldset ol li {
+    padding-bottom: 5px;
+}
+
+label {
+    display: block;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+label.checkbox {
+    display: inline;
+}
+
+input, textarea {
+    border: 1px solid #e2e2e2;
+    background: #fff;
+    color: #333;
+    font-size: 1.2em;
+    margin: 5px 0 6px 0;
+    padding: 5px;
+    width: 300px;
+}
+
+textarea {
+    font-family: inherit;
+    width: 500px;
+}
+
+input:focus, textarea:focus {
+    border: 1px solid #7ac0da;
+}
+
+input[type="checkbox"] {
+    background: transparent;
+    border: inherit;
+    width: auto;
+}
+
+input[type="submit"],
+input[type="button"],
+button {
+    background-color: #00a3d3;
+    border: 1px solid #dddfe1;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: 600;
+    padding: 7px;
+    margin-right: 8px;
+    width: auto;
+    color: #c7e3ea;
+}
+
+td input[type="submit"],
+td input[type="button"],
+td button {
+    font-size: 1em;
+    padding: 4px;
+    margin-right: 4px;
+}
+
+/* info and errors */
+.message-info {
+    border: 1px solid;
+    clear: both;
+    padding: 10px 20px;
+}
+
+.message-error {
+    clear: both;
+    color: #e80c4d;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+}
+
+.message-success {
+    color: #7ac0da;
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+}
+
+.error {
+    color: #e80c4d;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #e80c4d;
+    font-weight: bold;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #e80c4d;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #e80c4d;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.registration-form
+{
+    padding-top: 5em;
+    padding-left:-4em;
+}
+#CreateProject
+{
+    margin-bottom:1.1em;
+}

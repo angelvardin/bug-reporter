@@ -1,0 +1,54 @@
+﻿@model IEnumerable<BugReporter_v2.Models.BugViewModel>
+@{
+    ViewBag.Title = "Project";
+}
+
+@using(Html.BeginForm("ProjectBugs","Bug",FormMethod.Get))
+{
+<fieldset>
+    <legend>Select</legend>
+    <div id="choose">
+
+            <h3><label for="ProjectId">Select Project</label></h3>
+            <br /> 
+            @Html.DropDownList("ProjectId",ViewBag.Projects as SelectList,"---Select A Project---")
+            <input type="submit" value="Show Bugs" id="ShowBugs" />
+        
+    </div>
+</fieldset>
+}
+<br />
+@(Html.Kendo().Grid(Model)
+     .Name("BugGrid")
+     .Columns(colums => {
+         colums.Bound(e => e.BugId).Width(45).Filterable(true);
+         colums.Bound(e => e.Priority).Filterable(false);
+         colums.Bound(e => e.Status).Filterable(false);
+         colums.Bound(e => e.DateOfFirstSubmit).Filterable(false);
+         colums.Command(command => {
+         command.Custom("Details").Text("Edit").Action("Edit", "Bug").DataRouteValues(c =>c.Add(v => v.Owner));
+         command.Destroy();
+         }).Width(190);
+     })
+     .Editable()
+     .Pageable()
+     .Filterable(filterable => filterable
+        .Extra(false)
+        .Operators(operators => operators
+            .ForString(str => str.Clear()
+                .StartsWith("Starts with")
+                .IsEqualTo("Is equal to")
+                .IsNotEqualTo("Is not equal to")
+            ))
+        )
+     .Sortable()
+     .Scrollable()
+     .DataSource(dataSource => dataSource
+        .Server()
+        .Model(model => model.Id(p => p.BugId))
+        .Read("ProjectBugs", "Bug")
+        .Destroy("Delete", "Bug")
+        .PageSize(20)
+        )
+         
+     )

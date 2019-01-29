@@ -1,0 +1,485 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{51357F2E-B4E3-4E22-B055-FB977AD2482A}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BugReporter_v2</RootNamespace>
+    <AssemblyName>BugReporter_v2</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Kendo.Mvc">
+      <HintPath>..\External Libraries\Kendo.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.2.0.20710.0\lib\net40\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebPages.OAuth, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.OAuth.2.0.20710.0\lib\net40\Microsoft.Web.WebPages.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.2.0.20710.0\lib\net40\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.AspNet, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.AspNet.4.0.3.12153\lib\net40-full\DotNetOpenAuth.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.0.3.12153\lib\net40-full\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OpenId.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\AuthConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProjectController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Models\ProjectModel.cs" />
+    <Compile Include="Areas\Admin\Models\UserModel.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BugController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\BugModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\KendoUI\Black\editor.png" />
+    <Content Include="Content\KendoUI\Black\imagebrowser.png" />
+    <Content Include="Content\KendoUI\Black\loading-image.gif" />
+    <Content Include="Content\KendoUI\Black\loading.gif" />
+    <Content Include="Content\KendoUI\Black\slider-h.gif" />
+    <Content Include="Content\KendoUI\Black\slider-v.gif" />
+    <Content Include="Content\KendoUI\Black\sprite.png" />
+    <Content Include="Content\KendoUI\BlueOpal\editor.png" />
+    <Content Include="Content\KendoUI\BlueOpal\imagebrowser.png" />
+    <Content Include="Content\KendoUI\BlueOpal\loading-image.gif" />
+    <Content Include="Content\KendoUI\BlueOpal\loading.gif" />
+    <Content Include="Content\KendoUI\BlueOpal\slider-h.gif" />
+    <Content Include="Content\KendoUI\BlueOpal\slider-v.gif" />
+    <Content Include="Content\KendoUI\BlueOpal\sprite.png" />
+    <Content Include="Content\KendoUI\Bootstrap\editor.png" />
+    <Content Include="Content\KendoUI\Bootstrap\imagebrowser.png" />
+    <Content Include="Content\KendoUI\Bootstrap\loading-image.gif" />
+    <Content Include="Content\KendoUI\Bootstrap\loading.gif" />
+    <Content Include="Content\KendoUI\Bootstrap\slider-h.gif" />
+    <Content Include="Content\KendoUI\Bootstrap\slider-v.gif" />
+    <Content Include="Content\KendoUI\Bootstrap\sprite.png" />
+    <Content Include="Content\KendoUI\Default\editor.png" />
+    <Content Include="Content\KendoUI\Default\imagebrowser.png" />
+    <Content Include="Content\KendoUI\Default\loading-image.gif" />
+    <Content Include="Content\KendoUI\Default\loading.gif" />
+    <Content Include="Content\KendoUI\Default\slider-h.gif" />
+    <Content Include="Content\KendoUI\Default\slider-v.gif" />
+    <Content Include="Content\KendoUI\Default\sprite.png" />
+    <Content Include="Content\KendoUI\HighContrast\editor.png" />
+    <Content Include="Content\KendoUI\HighContrast\imagebrowser.png" />
+    <Content Include="Content\KendoUI\HighContrast\loading-image.gif" />
+    <Content Include="Content\KendoUI\HighContrast\loading.gif" />
+    <Content Include="Content\KendoUI\HighContrast\slider-h.gif" />
+    <Content Include="Content\KendoUI\HighContrast\slider-v.gif" />
+    <Content Include="Content\KendoUI\HighContrast\sprite.png" />
+    <Content Include="Content\KendoUI\images\back.png" />
+    <Content Include="Content\KendoUI\kendo.black.min.css" />
+    <Content Include="Content\KendoUI\kendo.blueopal.min.css" />
+    <Content Include="Content\KendoUI\kendo.bootstrap.min.css" />
+    <Content Include="Content\KendoUI\kendo.common.min.css" />
+    <Content Include="Content\KendoUI\kendo.dataviz.black.min.css" />
+    <Content Include="Content\KendoUI\kendo.dataviz.blueopal.min.css" />
+    <Content Include="Content\KendoUI\kendo.dataviz.bootstrap.min.css" />
+    <Content Include="Content\KendoUI\kendo.dataviz.default.min.css" />
+    <Content Include="Content\KendoUI\kendo.dataviz.highcontrast.min.css" />
+    <Content Include="Content\KendoUI\kendo.dataviz.metro.min.css" />
+    <Content Include="Content\KendoUI\kendo.dataviz.metroblack.min.css" />
+    <Content Include="Content\KendoUI\kendo.dataviz.min.css" />
+    <Content Include="Content\KendoUI\kendo.dataviz.moonlight.min.css" />
+    <Content Include="Content\KendoUI\kendo.dataviz.silver.min.css" />
+    <Content Include="Content\KendoUI\kendo.dataviz.uniform.min.css" />
+    <Content Include="Content\KendoUI\kendo.default.min.css" />
+    <Content Include="Content\KendoUI\kendo.highcontrast.min.css" />
+    <Content Include="Content\KendoUI\kendo.metro.min.css" />
+    <Content Include="Content\KendoUI\kendo.metroblack.min.css" />
+    <Content Include="Content\KendoUI\kendo.mobile.all.min.css" />
+    <Content Include="Content\KendoUI\kendo.mobile.android4.min.css" />
+    <Content Include="Content\KendoUI\kendo.mobile.blackberry.min.css" />
+    <Content Include="Content\KendoUI\kendo.mobile.ios.min.css" />
+    <Content Include="Content\KendoUI\kendo.mobile.meego.min.css" />
+    <Content Include="Content\KendoUI\kendo.moonlight.min.css" />
+    <Content Include="Content\KendoUI\kendo.rtl.min.css" />
+    <Content Include="Content\KendoUI\kendo.silver.min.css" />
+    <Content Include="Content\KendoUI\kendo.uniform.min.css" />
+    <Content Include="Content\KendoUI\MetroBlack\editor.png" />
+    <Content Include="Content\KendoUI\MetroBlack\imagebrowser.png" />
+    <Content Include="Content\KendoUI\MetroBlack\loading-image.gif" />
+    <Content Include="Content\KendoUI\MetroBlack\loading.gif" />
+    <Content Include="Content\KendoUI\MetroBlack\slider-h.gif" />
+    <Content Include="Content\KendoUI\MetroBlack\slider-v.gif" />
+    <Content Include="Content\KendoUI\MetroBlack\sprite.png" />
+    <Content Include="Content\KendoUI\Metro\editor.png" />
+    <Content Include="Content\KendoUI\Metro\imagebrowser.png" />
+    <Content Include="Content\KendoUI\Metro\loading-image.gif" />
+    <Content Include="Content\KendoUI\Metro\loading.gif" />
+    <Content Include="Content\KendoUI\Metro\slider-h.gif" />
+    <Content Include="Content\KendoUI\Metro\slider-v.gif" />
+    <Content Include="Content\KendoUI\Metro\sprite.png" />
+    <Content Include="Content\KendoUI\Moonlight\editor.png" />
+    <Content Include="Content\KendoUI\Moonlight\imagebrowser.png" />
+    <Content Include="Content\KendoUI\Moonlight\loading-image.gif" />
+    <Content Include="Content\KendoUI\Moonlight\loading.gif" />
+    <Content Include="Content\KendoUI\Moonlight\slider-h.gif" />
+    <Content Include="Content\KendoUI\Moonlight\slider-v.gif" />
+    <Content Include="Content\KendoUI\Moonlight\sprite.png" />
+    <Content Include="Content\KendoUI\Silver\editor.png" />
+    <Content Include="Content\KendoUI\Silver\imagebrowser.png" />
+    <Content Include="Content\KendoUI\Silver\loading-image.gif" />
+    <Content Include="Content\KendoUI\Silver\loading.gif" />
+    <Content Include="Content\KendoUI\Silver\slider-h.gif" />
+    <Content Include="Content\KendoUI\Silver\slider-v.gif" />
+    <Content Include="Content\KendoUI\Silver\sprite.png" />
+    <Content Include="Content\KendoUI\textures\brushed-metal.png" />
+    <Content Include="Content\KendoUI\textures\dots1.png" />
+    <Content Include="Content\KendoUI\textures\dots10.png" />
+    <Content Include="Content\KendoUI\textures\dots11.png" />
+    <Content Include="Content\KendoUI\textures\dots12.png" />
+    <Content Include="Content\KendoUI\textures\dots13.png" />
+    <Content Include="Content\KendoUI\textures\dots2.png" />
+    <Content Include="Content\KendoUI\textures\dots3.png" />
+    <Content Include="Content\KendoUI\textures\dots4.png" />
+    <Content Include="Content\KendoUI\textures\dots5.png" />
+    <Content Include="Content\KendoUI\textures\dots6.png" />
+    <Content Include="Content\KendoUI\textures\dots7.png" />
+    <Content Include="Content\KendoUI\textures\dots8.png" />
+    <Content Include="Content\KendoUI\textures\dots9.png" />
+    <Content Include="Content\KendoUI\textures\glass-lighter.png" />
+    <Content Include="Content\KendoUI\textures\glass.png" />
+    <Content Include="Content\KendoUI\textures\highlight.png" />
+    <Content Include="Content\KendoUI\textures\leather1.png" />
+    <Content Include="Content\KendoUI\textures\leather2.png" />
+    <Content Include="Content\KendoUI\textures\noise.png" />
+    <Content Include="Content\KendoUI\textures\stripe1.png" />
+    <Content Include="Content\KendoUI\textures\stripe2.png" />
+    <Content Include="Content\KendoUI\textures\stripe3.png" />
+    <Content Include="Content\KendoUI\textures\stripe4.png" />
+    <Content Include="Content\KendoUI\textures\stripe5.png" />
+    <Content Include="Content\KendoUI\textures\stripe6.png" />
+    <Content Include="Content\KendoUI\Uniform\editor.png" />
+    <Content Include="Content\KendoUI\Uniform\imagebrowser.png" />
+    <Content Include="Content\KendoUI\Uniform\loading-image.gif" />
+    <Content Include="Content\KendoUI\Uniform\loading.gif" />
+    <Content Include="Content\KendoUI\Uniform\slider-h.gif" />
+    <Content Include="Content\KendoUI\Uniform\slider-v.gif" />
+    <Content Include="Content\KendoUI\Uniform\sprite.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\KendoUI\images\KendoUI.ttf" />
+    <Content Include="Content\KendoUI\images\KendoUI.woff" />
+    <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Project\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Project\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Project\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Project\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Register.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\User\UsersActivities.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\ErrorAdmin.cshtml" />
+    <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Images\bug_logo.gif" />
+    <Content Include="Scripts\jquery-1.7.1.js" />
+    <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\kendo.all.min.js" />
+    <Content Include="Scripts\kendo.aspnetmvc.min.js" />
+    <Content Include="Scripts\knockout-2.1.0.debug.js" />
+    <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Images\accent.png" />
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\orderedList0.png" />
+    <Content Include="Images\orderedList1.png" />
+    <Content Include="Images\orderedList2.png" />
+    <Content Include="Images\orderedList3.png" />
+    <Content Include="Images\orderedList4.png" />
+    <Content Include="Images\orderedList5.png" />
+    <Content Include="Images\orderedList6.png" />
+    <Content Include="Images\orderedList7.png" />
+    <Content Include="Images\orderedList8.png" />
+    <Content Include="Images\orderedList9.png" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Bug\Index.cshtml" />
+    <Content Include="Views\Bug\Edit.cshtml" />
+    <Content Include="Views\Bug\Create.cshtml" />
+    <Content Include="Views\Bug\ProjectBugs.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BugReporter.DAL\BugReporter_v2.DAL.csproj">
+      <Project>{189871f6-3d41-451f-b07c-56ab5ad18f87}</Project>
+      <Name>BugReporter_v2.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:7282/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

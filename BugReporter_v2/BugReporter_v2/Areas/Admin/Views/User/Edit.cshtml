@@ -1,0 +1,63 @@
+﻿@model BugReporter_v2.Areas.Admin.Models.EditUserModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<hgroup class="title">
+    <h2>Edit user information</h2>
+</hgroup>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+<div class="registration-form">
+    <fieldset>
+        <legend>Registration Form</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.OldPassword)
+                @Html.PasswordFor(m => m.OldPassword)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.ConfirmPassword)
+                @Html.PasswordFor(m => m.ConfirmPassword)
+            </li>
+             <li>
+                @Html.LabelFor(m => m.FirstName)
+                @Html.TextBoxFor(m => m.FirstName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.LastName)
+                @Html.TextBoxFor(m => m.LastName)
+            </li>
+           <li>
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Telephone)
+                @Html.TextBoxFor(m => m.Telephone)
+            </li>
+        </ol>
+
+        <input type="submit" value="Edit" />
+    </fieldset>
+  </div>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index","User")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<BugReporter_v2.Areas.Admin.Models.UsersActivityModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+<h2>My Activity</h2>
+<br />
+<br />
+@(Html.Kendo().Grid(Model)
+    .Name("Grid")
+    .Columns(colums => {
+         colums.Bound(e => e.Id).Width(55).Filterable(true);
+         colums.Bound(e => e.LastActivityDone).Filterable(false);
+         colums.Bound(e => e.Project).Filterable(false);
+     })
+     .Editable()
+     .Pageable()
+     .Scrollable()
+     .Filterable(filterable => filterable
+        .Extra(false)
+        .Operators(operators => operators
+            .ForString(str => str.Clear()
+                .StartsWith("Starts with")
+                .IsEqualTo("Is equal to")
+                .IsNotEqualTo("Is not equal to")
+            ))
+        )
+     .DataSource(dataSource => dataSource
+        .Server()
+        .Model(model => model.Id(p => p.Id))
+        .Read("Index", "Home")
+        .PageSize(15)
+        ).HtmlAttributes(new { style = "width: 400px" })
+    )
+
+<div id="UserActivity">
+    <h3>Total Added Bugs: @ViewBag.TotalBugs</h3>
+   @* <h3> My Last Activity: @ViewBag.LastActivity</h3>*@
+</div>

@@ -1,0 +1,84 @@
+﻿@model IEnumerable<BugReporter_v2.Areas.Admin.Models.ProjectViewModels>
+
+@{
+    ViewBag.Title = "Projects";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Projects</h2>
+
+<a href="#" id="CreateProject">+ Add New Project</a> 
+
+@(Html.Kendo().Grid(Model)
+     .Name("ProjectGrid")
+     .Columns(colums => {
+         colums.Bound(e => e.ProjectName).Width(200);
+         colums.Bound(e => e.Description);
+         colums.Command(command => {
+             command.Custom("Details").Text("Edit").Action("Update", "Project").DataRouteValues(c => c.Add(v => v.ProjectName));
+             command.Destroy(); }).Width(180);
+    }
+    )
+    .Pageable()
+    .Sortable()
+    .Scrollable()
+    .DataSource(dataSource => dataSource
+        .Server()
+        .Model(model => model.Id(p => p.ProjectId))
+        .Read("Index", "Project")
+        .Destroy("Destroy", "Project")
+        .PageSize(10)
+        ).HtmlAttributes(new { style = "width: 800px" })
+)
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("form.k-edit-form").kendoValidator();
+    });
+    $("#CreateProject").button().click(function (event) {
+        location.href = '@Url.Action("Create","Project")';
+    });
+
+</script>
+
+@*<style>
+    .k-widget.k-window {
+    width: 670px;
+    height: 200px;
+    background-color: #00a3d3;
+
+}
+    #EditWindow
+    {
+        background-color: #00a3d3;
+    }
+    .k-window-titlebar k-header
+    {
+        background-color: #00a3d3;
+    }
+    EditWindow_wnd_title
+    label[for='Description']
+    {
+      position:absolute;left:20px;top: 60px;
+
+    }
+</style>*@
+
+    
+@*    @(Html.Kendo().Window().Name("Details")
+    .Title("Project Details")
+    .Visible(false)
+    .Modal(true)
+    .Draggable(true)
+    .Width(500)
+    .Height(400)
+)  
+ <script type="text/x-kendo-template" id="template" "temp>
+    
+     <div id="details-container">
+        <h2>#= ProjectName#</h2>
+     <br />
+     <text>#= ProjectDescription#</text>
+     </div>
+
+</script>*@

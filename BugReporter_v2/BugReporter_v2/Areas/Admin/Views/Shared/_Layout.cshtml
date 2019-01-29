@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Styles.Render("~/Content/themes/base/css")
+        <link href="~/Content/kendoUI/kendo.common.min.css" type="text/css" rel="stylesheet" />
+        <link href="~/Content/kendoUI/kendo.default.min.css" type="text/css" rel="stylesheet" />
+        <script src="~/Scripts/jquery.min.js" type="text/javascript"></script>
+        <script src="~/Scripts/kendo.all.min.js" type="text/javascript"></script>
+        <script src="~/Scripts/kendo.aspnetmvc.min.js" type="text/javascript"></script>
+        @Scripts.Render("~/bundles/jqueryui")
+
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+                <div class="title">
+                    <img class="logo" src="~/Images/bug_logo.gif"/>
+                    <p class="site-title"> Bug Reporter </p>
+                </div>
+                <div class="UserInfo">
+                    <span>Hello, @User.Identity.Name (@Html.ActionLink( "Log off", "LogOff", "../Account" )) </span>                
+                    <br />
+                    <span>Today is @DateTime.Now.ToShortDateString()</span>  
+                </div>
+                <span style="clear:both">&nbsp</span>
+                <ul id="menu">
+                    <li>@Html.ActionLink("Users","Index","User")</li>
+                    <li>@Html.ActionLink("User Activities","UsersActivities","User")</li>
+                    <li>@Html.ActionLink("Projects", "Index", "Project")</li>
+                    <li>@Html.ActionLink("User Panel", "Index", "../Bug")</li>
+                </ul>
+            </div>
+        </header>
+
+        <div id="body">
+            <section class="main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
+                </div>
+            </div>
+        </footer>
+         @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>
